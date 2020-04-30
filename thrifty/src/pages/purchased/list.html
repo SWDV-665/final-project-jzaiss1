@@ -9,17 +9,36 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of loadItems()" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
+    <ion-item-sliding *ngFor="let item of loadItems()">
+      <ion-item>
+        <ion-icon [name]="item.icon" item-start></ion-icon>
+        {{item.title}}<br>
+        <div class="item-note" item-end>
+          {{item.note}}
+        </div>
+        <p>Quantity {{item.quantity}}</p>
+        <p>Total Cost {{item.price | currency}}</p>
+      </ion-item>
+      <ion-item-options>
+      <button (click)="itemTapped($event, item)" ion-button color="primary" icon-start>
+        <ion-icon name="create"></ion-icon>
+        Edit
+      </button>
+      <button (click)="itemTapped($event, item)" ion-button color="light" icon-start>
+        <ion-icon name="share"></ion-icon>
+        Share
+      </button>
+      <button (click)="itemTapped($event, item)" ion-button color="secondary" icon-start>
+        <ion-icon name="trash"></ion-icon>
+        Done
+      </button>
+    </ion-item-options>
+    </ion-item-sliding >
   </ion-list>
+
   <div *ngIf="selectedItem" padding>
     Detials for <b>{{selectedItem.title}}</b>
     <br>Quantity <b>{{selectedItem.quantity}}</b>
-    <br>Price $<b>{{selectedItem.price}}</b>
+    <br>Total Cost <b>{{selectedItem.price | currency}}</b>
   </div>
 </ion-content>

@@ -20,6 +20,6 @@
   <div *ngIf="selectedItem" padding>
     Detials for <b>{{selectedItem.title}}</b>
     <br>Quantity <b>{{selectedItem.quantity}}</b>
-    <br>Price $<b>{{selectedItem.price}}</b>
+    <br>Budget <b>{{selectedItem.price | currency}}</b>
   </div>
 </ion-content>
