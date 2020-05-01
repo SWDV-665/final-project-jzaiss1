@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of loadItems()">
+    <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
       <ion-item>
         <ion-icon [name]="item.icon" item-start></ion-icon>
         {{item.title}}<br>
@@ -28,7 +28,7 @@
         <ion-icon name="share"></ion-icon>
         Share
       </button>
-      <button (click)="itemTapped($event, item)" ion-button color="secondary" icon-start>
+      <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
         <ion-icon name="trash"></ion-icon>
         Done
       </button>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PurchasesProvider } from '../../providers/purchases/purchases';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-list',
@@ -11,6 +12,7 @@ export class PurchasedPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
+              public ToastController: ToastController,
               public purchaseData: PurchasesProvider) {
 
     // If we navigated to this page, we will have an item available as a nav param
@@ -20,6 +22,17 @@ export class PurchasedPage {
 
   loadItems() {
     return this.purchaseData.getItems();
+  }
+
+  removeItem(item, index) {
+    console.log("Removing item - ", item, index);
+
+    const toast = this.ToastController.create({
+      message: 'Removing Item - ' + item.title + " ...",
+      duration: 3000
+    });
+    toast.present();
+    this.purchaseData.removeItem(index);
   }
 
   itemTapped(event, item) {
