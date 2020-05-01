@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PurchasesProvider } from '../providers/purchases/purchases';
 import { SalesProvider } from '../providers/sales/sales';
 import { WantProvider } from '../providers/want/want';
+import { InputServiceProvider } from '../providers/input-service/input-service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { WantProvider } from '../providers/want/want';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PurchasesProvider,
     SalesProvider,
-    WantProvider
+    WantProvider,
+    InputServiceProvider
   ]
 })
 export class AppModule {}
