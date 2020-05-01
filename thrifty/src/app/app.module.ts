@@ -11,6 +11,7 @@ import { SoldPage } from '../pages/sold/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PurchasesProvider } from '../providers/purchases/purchases';
+import { SalesProvider } from '../providers/sales/sales';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PurchasesProvider } from '../providers/purchases/purchases';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PurchasesProvider
+    PurchasesProvider,
+    SalesProvider
   ]
 })
 export class AppModule {}
