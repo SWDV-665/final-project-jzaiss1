@@ -8,8 +8,6 @@ import { SalesProvider } from '../../providers/sales/sales';
 })
 export class SoldPage {
   selectedItem: any;
-  icons: string[];
-  items: Array<{ title: string, note: string, icon: string, quantity: number, price: number }>;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,

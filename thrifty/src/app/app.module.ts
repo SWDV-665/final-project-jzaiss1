@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PurchasesProvider } from '../providers/purchases/purchases';
 import { SalesProvider } from '../providers/sales/sales';
+import { WantProvider } from '../providers/want/want';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SalesProvider } from '../providers/sales/sales';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PurchasesProvider,
-    SalesProvider
+    SalesProvider,
+    WantProvider
   ]
 })
 export class AppModule {}
