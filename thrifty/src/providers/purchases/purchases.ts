@@ -6,6 +6,9 @@ import { Injectable } from '@angular/core';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
+// This is the provider for handling data for the purchases page
+
 @Injectable()
 export class PurchasesProvider {
   icons: string[];
@@ -23,8 +26,8 @@ export class PurchasesProvider {
     // Let's populate this page with some filler content for funzies
     this.icons = ['stats', 'pricetags', 'clipboard'];
 
-    // For MVP we will host the items separatley for each list
-    // Once we are fully functional then we will consolidate the code 
+    // Sample data
+    // Keeping the data providers separate to accomodate different data sources
 
     this.items.push({
       title: 'Batman Glass',

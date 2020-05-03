@@ -10,6 +10,10 @@ import { WantProvider } from '../../providers/want/want';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
+// This provider is shared among the multipe pages.
+// Each page has a unique prompt describing the inputs
+
 @Injectable()
 export class InputServiceProvider {
 
