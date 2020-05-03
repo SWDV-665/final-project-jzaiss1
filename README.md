@@ -8,4 +8,9 @@ On this page you can create a list of items you're looking to find, how many you
 
 ## Purchases
 
+On the purchases page you can look back and see what you've previously purchased.  It's also possible to update the items purchased, delete items you wish you never purchased and add new purchases right from the app.
+
 ## Sold
+
+The sold page is a great reference to see what items have been sold and for how much.  You can add items that have been sold by you or even add items sold by others as a point of reference
+
