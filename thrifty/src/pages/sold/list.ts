@@ -4,6 +4,7 @@ import { SalesProvider } from '../../providers/sales/sales';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { InputServiceProvider } from '../../providers/input-service/input-service';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'page-list',
@@ -17,7 +18,8 @@ export class SoldPage {
               public ToastController: ToastController,
               public alertCtrl: AlertController,
               public inputService: InputServiceProvider,
-              public salesData: SalesProvider) {
+              public salesData: SalesProvider,
+              public socialSharing: SocialSharing) {
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
@@ -54,10 +56,24 @@ export class SoldPage {
     this.inputService.itemPromptSales();
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(SoldPage, {
-      item: item
+  textItem(item, index) {
+    console.log("Sending item via SMS - ", item, index);
+
+    const toast = this.ToastController.create({
+      message: 'Sending Item - ' + item.title + " ....",
+      duration: 3000
     });
+    toast.present();
+
+    let message = "Look what I sold " + item.title + " at the " + item.note + " for $ " + item.price
+
+    // Share via SMS
+    this.socialSharing.shareViaSMS(message, '123456789').then(() => {
+    // Success!
+    }).catch(() => {
+    // Error!
+    });
+
   }
+
 }

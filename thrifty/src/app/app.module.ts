@@ -14,6 +14,7 @@ import { PurchasesProvider } from '../providers/purchases/purchases';
 import { SalesProvider } from '../providers/sales/sales';
 import { WantProvider } from '../providers/want/want';
 import { InputServiceProvider } from '../providers/input-service/input-service';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { InputServiceProvider } from '../providers/input-service/input-service';
     PurchasesProvider,
     SalesProvider,
     WantProvider,
-    InputServiceProvider
+    InputServiceProvider,
+    SocialSharing
   ]
 })
 export class AppModule {}

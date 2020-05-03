@@ -24,9 +24,9 @@
           <ion-icon name="create"></ion-icon>
           Edit
         </button>
-        <button (click)="itemTapped($event, item)" ion-button color="light" icon-start>
-          <ion-icon name="share"></ion-icon>
-          Share
+        <button (click)="textItem(item, i)" ion-button color="light" icon-start>
+          <ion-icon name="text"></ion-icon>
+          Text
         </button>
         <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
           <ion-icon name="trash"></ion-icon>
@@ -42,9 +42,4 @@
     </button>
   </ion-fab>
 
-  <div *ngIf="selectedItem" padding>
-    Detials for <b>{{selectedItem.title}}</b>
-    <br>Quantity <b>{{selectedItem.quantity}}</b>
-    <br>Price <b>{{selectedItem.price | currency}}</b>
-  </div>
 </ion-content>
