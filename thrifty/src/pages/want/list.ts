@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { WantProvider } from '../../providers/want/want';
 import { ToastController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+import { InputServiceProvider } from '../../providers/input-service/input-service';
 
 @Component({
   selector: 'page-list',
@@ -13,6 +15,8 @@ export class WantPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public ToastController: ToastController,
+              public alertCtrl: AlertController,
+              public inputService: InputServiceProvider,
               public wantListData: WantProvider) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
@@ -20,6 +24,22 @@ export class WantPage {
 
   loadItems() {
     return this.wantListData.getItems();
+  }
+
+  editItem(item, index) {
+    console.log("Editing item - ", item, index);
+
+    const toast = this.ToastController.create({
+      message: 'Editing Item - ' + item.title + " ...",
+      duration: 3000
+    });
+    toast.present();
+    this.inputService.itemPromptWants(item, index);
+  }
+
+  addItem() {
+    console.log("Adding Item");
+    this.inputService.itemPromptWants();
   }
 
   removeItem(item, index) {

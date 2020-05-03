@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SalesProvider } from '../../providers/sales/sales';
 import { ToastController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+import { InputServiceProvider } from '../../providers/input-service/input-service';
 
 @Component({
   selector: 'page-list',
@@ -13,6 +15,8 @@ export class SoldPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public ToastController: ToastController,
+              public alertCtrl: AlertController,
+              public inputService: InputServiceProvider,
               public salesData: SalesProvider) {
 
     // If we navigated to this page, we will have an item available as a nav param
@@ -32,6 +36,22 @@ export class SoldPage {
     });
     toast.present();
     this.salesData.removeItem(index);
+  }
+
+  editItem(item, index) {
+    console.log("Editing item - ", item, index);
+
+    const toast = this.ToastController.create({
+      message: 'Editing Item - ' + item.title + " ...",
+      duration: 3000
+    });
+    toast.present();
+    this.inputService.itemPromptSales(item, index);
+  }
+
+  addItem() {
+    console.log("Adding Item");
+    this.inputService.itemPromptSales();
   }
 
   itemTapped(event, item) {

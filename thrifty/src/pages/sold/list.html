@@ -20,21 +20,27 @@
         <p>Price {{item.price | currency}}</p>
       </ion-item>
       <ion-item-options>
-      <button (click)="itemTapped($event, item)" ion-button color="primary" icon-start>
-        <ion-icon name="create"></ion-icon>
-        Edit
-      </button>
-      <button (click)="itemTapped($event, item)" ion-button color="light" icon-start>
-        <ion-icon name="share"></ion-icon>
-        Share
-      </button>
-      <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
-        <ion-icon name="trash"></ion-icon>
-        Done
-      </button>
-    </ion-item-options>
-    </ion-item-sliding >
+        <button (click)="editItem(item, i)" ion-button color="primary" icon-start>
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </button>
+        <button (click)="itemTapped($event, item)" ion-button color="light" icon-start>
+          <ion-icon name="share"></ion-icon>
+          Share
+        </button>
+        <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
+          <ion-icon name="trash"></ion-icon>
+          Done
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
+
+  <ion-fab bottom right>
+    <button (click)="addItem()" ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 
   <div *ngIf="selectedItem" padding>
     Detials for <b>{{selectedItem.title}}</b>
