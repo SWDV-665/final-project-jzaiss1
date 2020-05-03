@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { PurchasesProvider } from '../../providers/purchases/purchases';
 import { ToastController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { InputServiceProvider } from '../../providers/input-service/input-service';
+
 
 @Component({
   selector: 'page-list',
@@ -15,6 +17,7 @@ export class PurchasedPage {
               public navParams: NavParams,
               public ToastController: ToastController,
               public alertCtrl: AlertController,
+              public inputService: InputServiceProvider,
               public purchaseData: PurchasesProvider) {
 
     // If we navigated to this page, we will have an item available as a nav param
@@ -37,9 +40,22 @@ export class PurchasedPage {
     this.purchaseData.removeItem(index);
   }
 
-  addItem() {
+  editItem(item, index) {
+    console.log("Editing item - ", item, index);
 
+    const toast = this.ToastController.create({
+      message: 'Editing Item - ' + item.title + " ...",
+      duration: 3000
+    });
+    toast.present();
+    this.inputService.itemPromptPurchases(item, index);
   }
+
+  addItem() {
+    console.log("Adding Item");
+    this.inputService.itemPromptPurchases();
+  }
+
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
