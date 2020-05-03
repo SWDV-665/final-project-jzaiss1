@@ -6,6 +6,9 @@ import { AlertController } from 'ionic-angular';
 import { InputServiceProvider } from '../../providers/input-service/input-service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
+// This component implements a dedicated data provider named purchases and
+// a shared provider named input-service
+
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -25,6 +28,9 @@ export class PurchasedPage {
     this.selectedItem = navParams.get('item');
 
   }
+
+  // Here we're using a dedicated provider to get the items for items purchased
+  // This will permit us to integrate with an API for something like Mint in the future
 
   loadItems() {
     return this.purchaseData.getItems();
@@ -56,7 +62,6 @@ export class PurchasedPage {
     console.log("Adding Item");
     this.inputService.itemPromptPurchases();
   }
-
 
   textItem(item, index) {
     console.log("Sending item via SMS - ", item, index);

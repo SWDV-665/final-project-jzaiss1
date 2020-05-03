@@ -6,6 +6,9 @@ import { AlertController } from 'ionic-angular';
 import { InputServiceProvider } from '../../providers/input-service/input-service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
+// This component implements a dedicated data provider named want and
+// a shared provider named input-service
+
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
@@ -24,6 +27,8 @@ export class WantPage {
     this.selectedItem = navParams.get('item');
   }
 
+  // Here we're using a dedicated provider to get the items for items that make up a want list
+  
   loadItems() {
     return this.wantListData.getItems();
   }
